@@ -87,7 +87,7 @@ func (c *Client) do(method, resource, payload string, auth bool, result interfac
 	}
 
 	resp, err = c.httpClient.Do(req)
-	if err != nil || resp.StatusCode != 200 {
+	if err != nil {
 		return
 	}
 
