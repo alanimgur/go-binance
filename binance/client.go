@@ -43,12 +43,13 @@ func handleError(resp *http.Response) error {
 }
 
 // Creates a new Binance HTTP Client
-func NewClient(key, secret string) (c *Client) {
+func NewClient(httpClient *http.Client, key, secret string) (c *Client) {
 	client := &Client{
 		key:        key,
 		secret:     secret,
-		httpClient: &http.Client{},
+		httpClient: httpClient,
 	}
+
 	return client
 }
 
