@@ -1,27 +1,28 @@
 /*
-    binance.go
-        Wrapper for the Binance Exchange API
+   binance.go
+       Wrapper for the Binance Exchange API
 
-    Authors:
-        Pat DePippo  <patrick.depippo@dcrypt.io>
-        Matthew Woop <matthew.woop@dcrypt.io>
+   Authors:
+       Pat DePippo  <patrick.depippo@dcrypt.io>
+       Matthew Woop <matthew.woop@dcrypt.io>
 
-    To Do:
+   To Do:
 
 */
 package binance
 
-import (
-    //"errors"
-)
+import "net/http"
+
+//"errors"
 
 const (
-    BaseUrl = "https://www.binance.com"
+	BaseUrl = "https://www.binance.com"
 )
 
 type Binance struct {
-    client *Client
+	client *Client
 }
+
 /*
 func handleErr(r jsonResponse) error {
 
@@ -32,9 +33,7 @@ func handleErr(r jsonResponse) error {
     return nil
 }
 */
-func New(key, secret string) *Binance {
-    client := NewClient(key, secret)
-    return &Binance{client}
+func New(httpClient *http.Client, key, secret string) *Binance {
+	client := NewClient(httpClient, key, secret)
+	return &Binance{client}
 }
-
-
